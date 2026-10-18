@@ -16,6 +16,7 @@
         "photo_1": {
           "type": "memory_photo",
           "settings": {
+            "image": "shopify://shop_images/IMG20260501125256_1.jpg",
             "caption": "Where it all felt like home",
             "date": "Our First Walk"
           }
