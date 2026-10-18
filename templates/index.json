@@ -44,13 +44,29 @@
             "caption": "Our little universe, just you and me",
             "date": "Moments of Peace"
           }
+        },
+        "memory_photo_JDpFBh": {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Somewhere between strangers and soulmates.",
+            "date": "October 2026"
+          }
+        },
+        "memory_photo_iUfJph": {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "A quiet moment together",
+            "date": "October 2026"
+          }
         }
       },
       "block_order": [
         "photo_1",
         "photo_2",
         "photo_3",
-        "photo_4"
+        "photo_4",
+        "memory_photo_JDpFBh",
+        "memory_photo_iUfJph"
       ],
       "settings": {
         "welcome_eyebrow": "A Chapter-by-Chapter Journey",
