@@ -76,6 +76,14 @@
             "caption": "One moment, a thousand feelings.",
             "date": "#AThousandFeelings"
           }
+        },
+        "memory_photo_EKi6xj": {
+          "type": "memory_photo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20220403_152111_2_jpg.jpg",
+            "caption": "The kind of peace I never knew I needed.",
+            "date": "#MyKindOfPeace"
+          }
         }
       },
       "block_order": [
@@ -86,7 +94,8 @@
         "memory_photo_JDpFBh",
         "memory_photo_iUfJph",
         "memory_photo_MUEhH4",
-        "memory_photo_jxGxQe"
+        "memory_photo_jxGxQe",
+        "memory_photo_EKi6xj"
       ],
       "settings": {
         "welcome_eyebrow": "A Chapter-by-Chapter Journey",
