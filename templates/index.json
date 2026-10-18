@@ -48,8 +48,9 @@
         "memory_photo_JDpFBh": {
           "type": "memory_photo",
           "settings": {
+            "image": "shopify://shop_images/IMG_20220327_144705_jpg.jpg",
             "caption": "Somewhere between strangers and soulmates.",
-            "date": "October 2026"
+            "date": "#StrangersToSoulmates"
           }
         },
         "memory_photo_iUfJph": {
