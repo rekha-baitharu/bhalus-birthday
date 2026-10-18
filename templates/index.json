@@ -68,6 +68,14 @@
             "caption": "When the world faded and it was just us",
             "date": "#JustUsTwo"
           }
+        },
+        "memory_photo_jxGxQe": {
+          "type": "memory_photo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20220415_132427_jpg.jpg",
+            "caption": "One moment, a thousand feelings.",
+            "date": "#AThousandFeelings"
+          }
         }
       },
       "block_order": [
@@ -77,7 +85,8 @@
         "photo_4",
         "memory_photo_JDpFBh",
         "memory_photo_iUfJph",
-        "memory_photo_MUEhH4"
+        "memory_photo_MUEhH4",
+        "memory_photo_jxGxQe"
       ],
       "settings": {
         "welcome_eyebrow": "A Chapter-by-Chapter Journey",
