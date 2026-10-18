@@ -24,6 +24,7 @@
         "photo_2": {
           "type": "memory_photo",
           "settings": {
+            "image": "shopify://shop_images/1675780973202_2_jpg.jpg",
             "caption": "The quiet smile I never forget",
             "date": "Unspoken Magic"
           }
