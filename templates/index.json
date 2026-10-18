@@ -40,6 +40,7 @@
         "photo_4": {
           "type": "memory_photo",
           "settings": {
+            "image": "shopify://shop_images/1687195670407_2_jpg.jpg",
             "caption": "Our little universe, just you and me",
             "date": "Moments of Peace"
           }
