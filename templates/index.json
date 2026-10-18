@@ -32,6 +32,7 @@
         "photo_3": {
           "type": "memory_photo",
           "settings": {
+            "image": "shopify://shop_images/IMG20260425113415.jpg",
             "caption": "Holding hands, holding promises",
             "date": "Hand in Hand"
           }
