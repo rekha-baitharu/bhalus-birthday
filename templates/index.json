@@ -56,8 +56,9 @@
         "memory_photo_iUfJph": {
           "type": "memory_photo",
           "settings": {
-            "caption": "A quiet moment together",
-            "date": "October 2026"
+            "image": "shopify://shop_images/1673201919331_2_jpg.jpg",
+            "caption": "My favourite place has always been beside you.",
+            "date": "#BesideYouAlways"
           }
         }
       },
