@@ -1,0 +1,60 @@
+{
+  "layout": "theme.love-story",
+  "sections": {
+    "love_story": {
+      "type": "love-story",
+      "settings": {
+        "welcome_eyebrow": "A Chapter-by-Chapter Journey",
+        "welcome_heading": "To My Favourite Person in the World ❤️",
+        "welcome_subtitle": "This is our story. Not an ordinary one, but the one written in our silences, our hugs, our promises, and our dreams. Turn the page whenever your heart is ready.",
+        "welcome_button_text": "Open My Heart ❤️",
+        "gallery_title": "Our Little Universe 📸",
+        "gallery_subtitle": "Every photograph holds a heartbeat, a glance, a little world that belongs just to us.",
+        "birthday_heading": "Happy Birthday, My Love ❤️",
+        "birthday_subheading": "19 October • To the one who became my safe place, my person, and my future.",
+        "birthday_letter_btn_text": "Read One Last Thing 💌",
+        "birthday_letter_title": "To My Dearest Birthday Boy,",
+        "birthday_letter_content": "<p>Happy Birthday to the most special person in my universe. From the girl who was once afraid to trust love, to the woman who now chooses you without hesitation every single day—thank you for being my home, my comfort, and my peace.</p><p>May this year bring you as much happiness, warmth, and quiet strength as you have given me since the moment our hearts first spoke in silence. No matter where life takes us, remember: my favourite future will always have you in it.</p><p>With all my love, forever and always. ❤️</p>"
+      },
+      "blocks": {
+        "photo_1": {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Where it all felt like home",
+            "date": "Our First Walk"
+          }
+        },
+        "photo_2": {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "The quiet smile I never forget",
+            "date": "Unspoken Magic"
+          }
+        },
+        "photo_3": {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Holding hands, holding promises",
+            "date": "Hand in Hand"
+          }
+        },
+        "photo_4": {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Our little universe, just you and me",
+            "date": "Moments of Peace"
+          }
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4"
+      ]
+    }
+  },
+  "order": [
+    "love_story"
+  ]
+}

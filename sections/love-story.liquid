@@ -1,0 +1,445 @@
+{% comment %}
+  Section: love-story.liquid
+  Interactive Birthday Love Story Book & Memories Experience
+{% endcomment %}
+
+<div class="love-story-wrapper" id="LoveStoryApp" data-active-screen="welcome">
+  <!-- Subtle Ambient Glow Particles Background -->
+  <div class="love-ambient-bg" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+    <div class="ambient-hearts" id="AmbientHearts"></div>
+  </div>
+
+  <!-- Audio Player (Optional & Non-Autoplay for visitor comfort) -->
+  <div class="love-music-toggle" id="MusicToggleContainer" style="display: none;">
+    <button type="button" id="MusicToggleBtn" class="love-music-btn" aria-label="Toggle background melody">
+      <span class="music-icon" aria-hidden="true">🎵</span>
+      <span class="music-text">Melody</span>
+    </button>
+  </div>
+
+  <!-- Sticky Top Progress & Quick Navigation -->
+  <header class="love-topbar" id="LoveTopbar" aria-label="Story Navigation Bar">
+    <div class="love-topbar-inner">
+      <button type="button" class="love-pill-btn home-return-btn" id="ReturnHomeBtn" title="Back to Cover">
+        <span class="pill-icon" aria-hidden="true">❦</span>
+        <span class="pill-label">Cover</span>
+      </button>
+
+      <div class="love-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="32" id="StoryProgressContainer" aria-label="Story reading progress">
+        <div class="love-progress-bar" id="LoveProgressBar" style="width: 0%;"></div>
+        <span class="love-progress-label" id="LoveProgressLabel">Beginning</span>
+      </div>
+
+      <div class="love-topbar-actions">
+        <button type="button" class="love-pill-btn" id="JumpToMemoriesBtn" title="Go to Our Memories">
+          <span class="pill-icon" aria-hidden="true">📸</span>
+          <span class="pill-label">Memories</span>
+        </button>
+        <button type="button" class="love-pill-btn" id="JumpToBirthdayBtn" title="Go to Birthday Surprise">
+          <span class="pill-icon" aria-hidden="true">💌</span>
+          <span class="pill-label">Birthday Letter</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- SCREEN 1: WELCOME / COVER PAGE ("Open My Heart") -->
+  <!-- ============================================== -->
+  <section class="love-screen screen-welcome active" id="ScreenWelcome" aria-label="Welcome Cover">
+    <div class="welcome-card-shell">
+      <div class="welcome-card-content">
+        <div class="welcome-envelope-wrapper" id="WelcomeEnvelope">
+          <div class="wax-seal" aria-hidden="true">
+            <span class="wax-seal-heart">❤️</span>
+          </div>
+          <div class="envelope-svg-container" aria-hidden="true">
+            <svg class="envelope-art" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20C10 14.4772 14.4772 10 20 10H140C145.523 10 150 14.4772 150 20V100C150 105.523 145.523 110 140 110H20C14.4772 110 10 105.523 10 100V20Z" fill="#FDF3EE" stroke="#D9A0AD" stroke-width="2"/>
+              <path d="M10 20L80 72L150 20" stroke="#D9A0AD" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 108L58 62M150 108L102 62" stroke="#E8C3CB" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="welcome-eyebrow">{{ section.settings.welcome_eyebrow }}</p>
+        <h1 class="welcome-heading">{{ section.settings.welcome_heading }}</h1>
+        <div class="welcome-divider" aria-hidden="true">
+          <span class="flourish">❦</span>
+        </div>
+        <p class="welcome-subtitle">{{ section.settings.welcome_subtitle }}</p>
+
+        <div class="welcome-cta-group">
+          <button type="button" class="btn-love-primary pulse-subtle" id="OpenHeartBtn">
+            <span>{{ section.settings.welcome_button_text }}</span>
+          </button>
+          <div class="welcome-reading-note">
+            <span>A 29-chapter digital love book written for your birthday • 19 October</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- SCREEN 2: STORY READING SCREEN (1 POEM AT A TIME) -->
+  <!-- ============================================== -->
+  <section class="love-screen screen-story" id="ScreenStory" aria-label="Story Chapter Reading" style="display: none;">
+    <div class="story-stage-container">
+      <article class="story-parchment-card" id="StoryParchment">
+        <!-- Chapter Header -->
+        <header class="story-chapter-header">
+          <div class="chapter-meta">
+            <span class="chapter-badge" id="StoryChapterBadge">Story 01 of 29</span>
+            <span class="chapter-ornament" aria-hidden="true">✦</span>
+            <span class="chapter-atmosphere-badge" id="StoryAtmosphere">Memory</span>
+          </div>
+          <h2 class="story-title" id="StoryTitle">1. The Girl Who Was Afraid to Love Again</h2>
+          <div class="story-card-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon" id="StoryDividerIcon">❤️</span>
+            <span class="divider-line"></span>
+          </div>
+        </header>
+
+        <!-- Stanza text content -->
+        <div class="story-text-flow" id="StoryTextContent">
+          <!-- Populated dynamically via JS to guarantee 100% fidelity -->
+        </div>
+
+        <!-- Story Bottom Navigation -->
+        <footer class="story-footer-nav">
+          <button type="button" class="btn-story-nav btn-prev" id="BtnPrevStory" aria-label="Previous Chapter">
+            <span class="nav-arrow" aria-hidden="true">←</span>
+            <span class="nav-text">Previous Chapter</span>
+          </button>
+
+          <div class="story-counter-pill" id="StoryCounterPill">
+            <span id="CurrentChapterNum">1</span> / <span id="TotalChaptersNum">29</span>
+          </div>
+
+          <button type="button" class="btn-story-nav btn-next btn-love-primary" id="BtnNextStory" aria-label="Next Chapter">
+            <span class="nav-text" id="NextBtnText">Next Chapter ❤️</span>
+            <span class="nav-arrow" aria-hidden="true">→</span>
+          </button>
+        </footer>
+      </article>
+
+      <!-- Keyboard Tip for Desktop Reading -->
+      <p class="reading-keyboard-hint" aria-hidden="true">
+        <span>Tip: You can use your keyboard <kbd>←</kbd> and <kbd>→</kbd> arrow keys to turn pages.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- SCREEN 3: MEMORIES GALLERY ("Our Little Universe") -->
+  <!-- ============================================== -->
+  <section class="love-screen screen-gallery" id="ScreenGallery" aria-label="Our Memories Gallery" style="display: none;">
+    <div class="gallery-inner-container">
+      <header class="gallery-header">
+        <span class="gallery-eyebrow">A Special Memory Lane</span>
+        <h2 class="gallery-title">{{ section.settings.gallery_title }}</h2>
+        <div class="welcome-divider" aria-hidden="true">
+          <span class="flourish">❦</span>
+        </div>
+        <p class="gallery-subtitle">{{ section.settings.gallery_subtitle }}</p>
+      </header>
+
+      <!-- Gallery Grid of real photo uploads / placeholders -->
+      <div class="gallery-scrapbook-grid" id="GalleryGrid">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div class="memory-polaroid" {{ block.shopify_attributes }} data-photo-index="{{ forloop.index0 }}">
+              <div class="polaroid-pin" aria-hidden="true"></div>
+              <div class="polaroid-frame" tabindex="0" role="button" aria-label="View memory: {{ block.settings.caption | escape }}">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 800 }}"
+                    alt="{{ block.settings.caption | default: 'Our memory' | escape }}"
+                    loading="lazy"
+                    class="polaroid-img"
+                  >
+                {%- else -%}
+                  <!-- Elegant romantic placeholder waiting for custom photo upload in Theme Editor -->
+                  <div class="polaroid-placeholder">
+                    <div class="placeholder-art" aria-hidden="true">
+                      <span class="placeholder-icon">📸</span>
+                      <span class="placeholder-sparkle">✨</span>
+                    </div>
+                    <span class="placeholder-caption-tip">{{ block.settings.caption | default: 'Upload your photo in Shopify Theme Customizer' }}</span>
+                  </div>
+                {%- endif -%}
+              </div>
+              <div class="polaroid-caption-box">
+                <p class="polaroid-caption">{{ block.settings.caption | default: 'A moment frozen in love' }}</p>
+                {%- if block.settings.date != blank -%}
+                  <span class="polaroid-date">{{ block.settings.date }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <!-- Default sample polaroid memories if no blocks added yet -->
+          <div class="memory-polaroid">
+            <div class="polaroid-pin" aria-hidden="true"></div>
+            <div class="polaroid-frame" tabindex="0">
+              <div class="polaroid-placeholder">
+                <span class="placeholder-icon">📸</span>
+                <span class="placeholder-caption-tip">Our First Day Together</span>
+              </div>
+            </div>
+            <div class="polaroid-caption-box">
+              <p class="polaroid-caption">Where it all started</p>
+              <span class="polaroid-date">Memory 01</span>
+            </div>
+          </div>
+          <div class="memory-polaroid">
+            <div class="polaroid-pin" aria-hidden="true"></div>
+            <div class="polaroid-frame" tabindex="0">
+              <div class="polaroid-placeholder">
+                <span class="placeholder-icon">🌸</span>
+                <span class="placeholder-caption-tip">The smile that changed everything</span>
+              </div>
+            </div>
+            <div class="polaroid-caption-box">
+              <p class="polaroid-caption">Unspoken peace</p>
+              <span class="polaroid-date">Memory 02</span>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="gallery-nav-row">
+        <button type="button" class="btn-story-nav btn-prev" id="BtnBackToPoemFromGallery">
+          <span class="nav-arrow" aria-hidden="true">←</span>
+          <span class="nav-text">Back to Story 29</span>
+        </button>
+
+        <button type="button" class="btn-love-primary pulse-subtle" id="BtnGoToBirthday">
+          <span>The Birthday Surprise 💌</span>
+          <span class="nav-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- SCREEN 4: FINAL BIRTHDAY SURPRISE & LETTER -->
+  <!-- ============================================== -->
+  <section class="love-screen screen-birthday" id="ScreenBirthday" aria-label="Birthday Surprise" style="display: none;">
+    <div class="birthday-inner-stage">
+      <div class="birthday-greetings-card">
+        <div class="birthday-crown" aria-hidden="true">👑</div>
+        <span class="birthday-tagline">19 October • Special Birthday Edition</span>
+        <h1 class="birthday-title">{{ section.settings.birthday_heading }}</h1>
+        <p class="birthday-subheading">{{ section.settings.birthday_subheading }}</p>
+
+        <div class="birthday-cake-animation" aria-hidden="true">
+          <div class="candle">
+            <div class="flame"></div>
+          </div>
+          <div class="cake-top"></div>
+          <div class="cake-bottom"></div>
+        </div>
+
+        <!-- Reveal Letter Action Button -->
+        <div class="letter-action-container" id="LetterActionBox">
+          <button type="button" class="btn-love-primary letter-reveal-btn pulse-subtle" id="BtnOpenBirthdayLetter">
+            <span>{{ section.settings.birthday_letter_btn_text }}</span>
+          </button>
+        </div>
+
+        <!-- The Handwritten Letter Parchment (Revealed on click) -->
+        <article class="birthday-letter-parchment" id="BirthdayLetterParchment" style="display: none;" aria-live="polite">
+          <div class="letter-top-flourish" aria-hidden="true">
+            <span class="letter-seal">💌</span>
+          </div>
+          <h3 class="letter-title">{{ section.settings.birthday_letter_title }}</h3>
+          <div class="letter-body-prose">
+            {{ section.settings.birthday_letter_content }}
+          </div>
+          <div class="letter-signature">
+            <p class="signature-date">19 October</p>
+            <p class="signature-hand">Forever Yours ❤️</p>
+          </div>
+        </article>
+
+        <!-- Final Restart Journey Options -->
+        <div class="birthday-footer-actions">
+          <button type="button" class="btn-story-nav" id="BtnBackToGallery">
+            <span class="nav-arrow" aria-hidden="true">←</span>
+            <span>Back to Memories</span>
+          </button>
+          <button type="button" class="btn-pill-restart" id="BtnRestartJourney">
+            <span class="restart-icon" aria-hidden="true">↺</span>
+            <span>Start Our Story Again</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal / Lightbox for Gallery Photos -->
+  <div class="photo-lightbox-modal" id="PhotoLightboxModal" role="dialog" aria-modal="true" aria-hidden="true" style="display: none;">
+    <div class="lightbox-backdrop" id="LightboxBackdrop"></div>
+    <div class="lightbox-content-box">
+      <button type="button" class="lightbox-close-btn" id="LightboxCloseBtn" aria-label="Close photo view">✕</button>
+      <div class="lightbox-media-wrapper" id="LightboxMediaWrapper">
+        <!-- Rendered photo or placeholder -->
+      </div>
+      <div class="lightbox-caption-bar" id="LightboxCaptionBar"></div>
+    </div>
+  </div>
+</div>
+
+{% render 'love-story-data' %}
+
+{% schema %}
+{
+  "name": "Birthday Love Story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Welcome Screen Settings"
+    },
+    {
+      "type": "text",
+      "id": "welcome_eyebrow",
+      "label": "Welcome Eyebrow",
+      "default": "A Chapter-by-Chapter Journey"
+    },
+    {
+      "type": "text",
+      "id": "welcome_heading",
+      "label": "Welcome Main Heading",
+      "default": "To My Favourite Person in the World ❤️"
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_subtitle",
+      "label": "Welcome Subtitle",
+      "default": "This is our story. Not an ordinary one, but the one written in our silences, our hugs, our promises, and our dreams. Turn the page whenever your heart is ready."
+    },
+    {
+      "type": "text",
+      "id": "welcome_button_text",
+      "label": "Welcome Button Text",
+      "default": "Open My Heart ❤️"
+    },
+    {
+      "type": "header",
+      "content": "Our Memories Gallery Settings"
+    },
+    {
+      "type": "text",
+      "id": "gallery_title",
+      "label": "Gallery Heading",
+      "default": "Our Little Universe 📸"
+    },
+    {
+      "type": "textarea",
+      "id": "gallery_subtitle",
+      "label": "Gallery Subtitle",
+      "default": "Every photograph holds a heartbeat, a glance, a little world that belongs just to us."
+    },
+    {
+      "type": "header",
+      "content": "Birthday Surprise Settings"
+    },
+    {
+      "type": "text",
+      "id": "birthday_heading",
+      "label": "Birthday Main Heading",
+      "default": "Happy Birthday, My Love ❤️"
+    },
+    {
+      "type": "text",
+      "id": "birthday_subheading",
+      "label": "Birthday Subheading",
+      "default": "19 October • To the one who became my safe place, my person, and my future."
+    },
+    {
+      "type": "text",
+      "id": "birthday_letter_btn_text",
+      "label": "Letter Reveal Button Text",
+      "default": "Read One Last Thing 💌"
+    },
+    {
+      "type": "text",
+      "id": "birthday_letter_title",
+      "label": "Birthday Letter Salutation",
+      "default": "To My Dearest Birthday Boy,"
+    },
+    {
+      "type": "richtext",
+      "id": "birthday_letter_content",
+      "label": "Birthday Letter Text",
+      "default": "<p>Happy Birthday to the most special person in my universe. From the girl who was once afraid to trust love, to the woman who now chooses you without hesitation every single day—thank you for being my home, my comfort, and my peace.</p><p>May this year bring you as much happiness, warmth, and quiet strength as you have given me since the moment our hearts first spoke in silence. No matter where life takes us, remember: my favourite future will always have you in it.</p><p>With all my love, forever and always. ❤️</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "memory_photo",
+      "name": "Memory Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Memory Photograph"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "A quiet moment together"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date or Location",
+          "default": "October 2026"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Birthday Love Story",
+      "blocks": [
+        {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Where it all felt like home",
+            "date": "Our First Walk"
+          }
+        },
+        {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "The quiet smile I never forget",
+            "date": "Unspoken Magic"
+          }
+        },
+        {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Holding hands, holding promises",
+            "date": "Hand in Hand"
+          }
+        },
+        {
+          "type": "memory_photo",
+          "settings": {
+            "caption": "Our little universe, just you and me",
+            "date": "Moments of Peace"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
