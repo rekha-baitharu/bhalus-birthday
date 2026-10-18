@@ -60,6 +60,14 @@
             "caption": "My favourite place has always been beside you.",
             "date": "#BesideYouAlways"
           }
+        },
+        "memory_photo_MUEhH4": {
+          "type": "memory_photo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20241128_123858_2_jpg.jpg",
+            "caption": "When the world faded and it was just us",
+            "date": "#JustUsTwo"
+          }
         }
       },
       "block_order": [
@@ -68,7 +76,8 @@
         "photo_3",
         "photo_4",
         "memory_photo_JDpFBh",
-        "memory_photo_iUfJph"
+        "memory_photo_iUfJph",
+        "memory_photo_MUEhH4"
       ],
       "settings": {
         "welcome_eyebrow": "A Chapter-by-Chapter Journey",
